@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="date_pattern_month_single_digit_day_first">d MMM</string>
+    <string name="date_pattern_month_single_digit_day">d MMM</string>
+    <string name="date_pattern_month_day_of_week">MMM, EEE d</string>
+    <string name="date_pattern_full_month_year">MMMM, yyyy</string>
+    <string name="date_pattern_full_month_year_no_comma">MMMM yyyy</string>
+    <string name="date_pattern_day_month_day_name">d MMM (EEE)</string>
+    <string name="date_pattern_year_day_month_day_name">d MMM yyyy (EEE)</string>
+    <string name="date_pattern_day_of_week" translatable="false">EEE</string>
+    <string name="date_pattern_full_date" translatable="false">yyyy.MM.dd</string>
+    <string name="date_pattern_day_month_year">dd MMM yyyy</string>
+    <string name="date_pattern_single_digit_day_month_year">d MMM yyyy</string>
+
+    <string name="time_pattern_12">h:mm a</string>
+    <string name="time_pattern_12_no_minutes">h a</string>
+    <string name="time_pattern_24" translatable="false">HH:mm</string>
+
+    <string name="yesterday">Yesterday</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+</resources>
