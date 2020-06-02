@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.datsenko.workouts.databinding.FragmentResultBinding
+import com.datsenko.workouts.presentation.results.epoxy.emptyList
 import com.datsenko.workouts.presentation.results.epoxy.exerciseItem
 import com.datsenko.workouts.presentation.results.model.ExerciseModel
 import dagger.android.support.DaggerFragment
@@ -38,10 +39,16 @@ class ResultFragment : DaggerFragment() {
 
     private fun show(entities: List<ExerciseModel>) {
         binding.resultsRv.withModels {
-            entities.forEach { item ->
-                exerciseItem {
-                    id(item.hashCode())
-                    model(item)
+            if (entities.isEmpty()) {
+                emptyList {
+                    id("empty-list")
+                }
+            } else {
+                entities.forEach { item ->
+                    exerciseItem {
+                        id(item.hashCode())
+                        model(item)
+                    }
                 }
             }
         }
