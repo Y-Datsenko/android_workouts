@@ -6,8 +6,8 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 @Suppress("UNCHECKED_CAST")
-class DaggerViewModelFactory @Inject constructor(
-    private val viewModelsMap: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<SingleViewModelFactory<*>>>
+class DaggerStatelessViewModelFactory @Inject constructor(
+    private val viewModelsMap: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<StatelessViewModelFactory<*>>>
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

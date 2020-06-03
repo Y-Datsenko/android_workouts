@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -20,6 +21,7 @@ class ResultFragment : DaggerFragment() {
 
     private var _binding: FragmentResultBinding? = null
     private val binding get() = _binding!!
+    private val myViewModel by viewModels<ResultViewModel> { factory }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentResultBinding.inflate(inflater, container, false)
@@ -28,9 +30,6 @@ class ResultFragment : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val myViewModel = ViewModelProvider(this.viewModelStore, factory)[ResultViewModel::class.java]
-
         myViewModel.workouts.observe(viewLifecycleOwner, Observer(this::show))
         binding.resultsFab.setOnClickListener {
             it.findNavController().navigate(ResultFragmentDirections.actionResultFragmentToAddExerciseFragment())

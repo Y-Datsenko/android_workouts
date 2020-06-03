@@ -2,7 +2,6 @@ package com.datsenko.workouts.di.modules
 
 import com.datsenko.workouts.di.FragmentScope
 import com.datsenko.workouts.presentation.newexercise.AddExerciseFragment
-import com.datsenko.workouts.presentation.newexercise.AddExerciseFragmentModule
 import com.datsenko.workouts.presentation.results.ResultFragment
 import com.datsenko.workouts.presentation.results.ResultFragmentModule
 import dagger.Module
@@ -16,6 +15,6 @@ abstract class FragmentBindingModule {
     abstract fun workoutResultFragment(): ResultFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [AddExerciseFragmentModule::class])
+    @ContributesAndroidInjector
     abstract fun addExerciseFragment(): AddExerciseFragment
 }

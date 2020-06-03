@@ -1,12 +1,12 @@
 package com.datsenko.workouts.di.modules
 
 import androidx.lifecycle.ViewModelProvider
-import com.datsenko.workouts.di.DaggerViewModelFactory
+import com.datsenko.workouts.di.DaggerStatelessViewModelFactory
 import dagger.Binds
 import dagger.Module
 
 @Module
 abstract class ViewModelFactoryModule {
     @Binds
-    abstract fun bindViewModelFactory(viewModelFactory: DaggerViewModelFactory): ViewModelProvider.Factory
+    abstract fun bindViewModelFactory(viewModelFactory: DaggerStatelessViewModelFactory): ViewModelProvider.Factory
 }

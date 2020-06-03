@@ -1,35 +1,35 @@
 package com.datsenko.workouts.presentation.newexercise
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.datsenko.workouts.di.SingleViewModelFactory
+import com.datsenko.workouts.di.StatefulViewModelFactory
 import com.datsenko.workouts.domain.Exercise
 import com.datsenko.workouts.domain.WorkoutRepositoryApi
+import com.squareup.inject.assisted.Assisted
+import com.squareup.inject.assisted.AssistedInject
 import kotlinx.coroutines.launch
 import java.util.Date
-import javax.inject.Inject
-import javax.inject.Provider
 
-class AddExerciseViewModel(
-    private val repository: WorkoutRepositoryApi
+class AddExerciseViewModel @AssistedInject constructor(
+    private val repository: WorkoutRepositoryApi,
+    @Assisted private val handle: SavedStateHandle
 ) : ViewModel() {
 
-    private var _repeats = MutableLiveData<Int>()
-    val repeats: LiveData<String> = Transformations.map(_repeats) { it.toString() }
-    private var _isAddingMode = MutableLiveData<Boolean>()
-    val isAddingMode: LiveData<Boolean> = _isAddingMode
-    private var _closeEvent = MutableLiveData<Any>()
-    val closeEvent: LiveData<Any> = _closeEvent
-
-    init {
-        _isAddingMode.value = true
-        _repeats.value = 0
-        Log.d("logTag", "init $repository")
+    companion object {
+        const val ARG_REPEATS = "ARG_REPEATS"
+        const val ARG_IS_ADDING = "ARG_IS_ADDING"
     }
+
+    private var _closeEvent = MutableLiveData<Any>()
+    private val _repeats: LiveData<Int> = handle.getLiveData(ARG_REPEATS, 0)
+
+    val repeats: LiveData<String> = Transformations.map(_repeats) { it.toString() }
+    val isAddingMode: LiveData<Boolean> = handle.getLiveData(ARG_IS_ADDING, true)
+    val closeEvent: LiveData<Any> = _closeEvent
 
     fun onOnePressed() {
         changeCount(1)
@@ -44,7 +44,7 @@ class AddExerciseViewModel(
     }
 
     fun onSwitchModeChanged(checked: Boolean) {
-        _isAddingMode.postValue(checked)
+        handle.set(ARG_IS_ADDING, checked)
     }
 
     fun onSaveClicked() {
@@ -62,14 +62,9 @@ class AddExerciseViewModel(
         val deltaValue = if (isAddingMode.value == true) delta else -delta
         val tempValue = _repeats.value?.let { it + deltaValue } ?: 0
         val newValue = if (tempValue < 0) 0 else tempValue
-        _repeats.postValue(newValue)
+        handle.set(ARG_REPEATS, newValue)
     }
 
-    class Factory @Inject constructor(
-        private val repositoryProvider: Provider<WorkoutRepositoryApi>
-    ) : SingleViewModelFactory<AddExerciseViewModel> {
-
-        override fun create(): AddExerciseViewModel =
-            AddExerciseViewModel(repository = repositoryProvider.get())
-    }
+    @AssistedInject.Factory
+    interface Factory : StatefulViewModelFactory<AddExerciseViewModel>
 }

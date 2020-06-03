@@ -5,6 +5,7 @@ import com.datsenko.workouts.di.modules.ActivityBindingModule
 import com.datsenko.workouts.di.modules.AppModule
 import com.datsenko.workouts.di.modules.RepositoryBindingsModule
 import com.datsenko.workouts.di.modules.ViewModelFactoryModule
+import com.datsenko.workouts.di.modules.ViewModelsModule
 import com.datsenko.workouts.presentation.AndroidApp
 import dagger.BindsInstance
 import dagger.Component
@@ -16,7 +17,8 @@ import javax.inject.Singleton
     modules = [AppModule::class,
         ActivityBindingModule::class,
         ViewModelFactoryModule::class,
-        RepositoryBindingsModule::class]
+        RepositoryBindingsModule::class,
+        ViewModelsModule::class]
 )
 interface AppComponent : AndroidInjector<AndroidApp> {
 

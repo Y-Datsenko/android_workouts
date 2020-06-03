@@ -5,24 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.datsenko.workouts.databinding.FragmentAddExerciseBinding
 import com.datsenko.workouts.presentation.base.DaggerBottomSheetDialogFragment
+import com.datsenko.workouts.utils.fragmentSavedStateViewModels
 import javax.inject.Inject
-
 
 class AddExerciseFragment : DaggerBottomSheetDialogFragment() {
 
-    @Inject lateinit var factory: ViewModelProvider.Factory
+    @Inject lateinit var factory: AddExerciseViewModel.Factory
 
     private var _binding: FragmentAddExerciseBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: AddExerciseViewModel
+    private val viewModel: AddExerciseViewModel by fragmentSavedStateViewModels {
+        factory.create(it)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentAddExerciseBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this.viewModelStore, factory)[AddExerciseViewModel::class.java]
-
         return binding.root
     }
 
