@@ -1,6 +1,9 @@
 package com.datsenko.workouts.utils
 
 import androidx.annotation.StringRes
+import com.datsenko.domain.utils.isToday
+import com.datsenko.domain.utils.isTomorrow
+import com.datsenko.domain.utils.isYesterday
 import com.datsenko.workouts.R
 import java.text.SimpleDateFormat
 import java.util.Date

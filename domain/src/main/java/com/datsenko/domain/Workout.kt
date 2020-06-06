@@ -1,3 +1,3 @@
-package com.datsenko.workouts.domain
+package com.datsenko.domain
 
 data class Workout(val title: String, val imageUrl: String)

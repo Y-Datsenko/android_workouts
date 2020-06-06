@@ -1,4 +1,4 @@
-package com.datsenko.workouts.data.db
+package com.datsenko.data.db
 
 import androidx.room.Dao
 import androidx.room.Insert

@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.datsenko.domain.WorkoutRepositoryApi
 import com.datsenko.workouts.di.StatelessViewModelFactory
-import com.datsenko.workouts.domain.WorkoutRepositoryApi
 import com.squareup.inject.assisted.AssistedInject
 import kotlinx.coroutines.flow.map
 

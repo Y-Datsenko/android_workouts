@@ -1,4 +1,4 @@
-package com.datsenko.workouts.utils
+package com.datsenko.domain.utils
 
 interface BaseMapper<From, To> {
 

@@ -1,7 +1,7 @@
-package com.datsenko.workouts.di.modules
+package com.datsenko.data.di
 
-import com.datsenko.workouts.data.WorkoutRepository
-import com.datsenko.workouts.domain.WorkoutRepositoryApi
+import com.datsenko.data.WorkoutRepository
+import com.datsenko.domain.WorkoutRepositoryApi
 import dagger.Binds
 import dagger.Module
 import javax.inject.Singleton

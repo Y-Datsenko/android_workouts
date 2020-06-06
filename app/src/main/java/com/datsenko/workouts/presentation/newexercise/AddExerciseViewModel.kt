@@ -7,8 +7,6 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.datsenko.workouts.di.StatefulViewModelFactory
-import com.datsenko.workouts.domain.Exercise
-import com.datsenko.workouts.domain.WorkoutRepositoryApi
 import com.datsenko.workouts.utils.SingleEvent
 import com.squareup.inject.assisted.Assisted
 import com.squareup.inject.assisted.AssistedInject
@@ -16,7 +14,7 @@ import kotlinx.coroutines.launch
 import java.util.Date
 
 class AddExerciseViewModel @AssistedInject constructor(
-    private val repository: WorkoutRepositoryApi,
+    private val repository: com.datsenko.domain.WorkoutRepositoryApi,
     @Assisted private val handle: SavedStateHandle
 ) : ViewModel() {
 
@@ -52,7 +50,8 @@ class AddExerciseViewModel @AssistedInject constructor(
         viewModelScope.launch {
             val repeats = _repeats.value ?: 0
             if (repeats > 0) {
-                val entity = Exercise(date = Date(), repeats = _repeats.value ?: 0)
+                val entity =
+                    com.datsenko.domain.Exercise(date = Date(), repeats = _repeats.value ?: 0)
                 repository.insert(entity)
             }
             _closeEvent.postValue(SingleEvent())

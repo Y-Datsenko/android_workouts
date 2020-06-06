@@ -1,23 +1,23 @@
-package com.datsenko.workouts.di.modules
+package com.datsenko.data.di
 
 import android.content.Context
 import androidx.room.Room
-import com.datsenko.workouts.data.db.WorkoutDao
-import com.datsenko.workouts.data.db.WorkoutDatabase
+import com.datsenko.data.db.WorkoutDao
+import com.datsenko.data.db.WorkoutDatabase
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class AppModule {
+class DatabaseModule {
 
     @Provides
     @Singleton
     fun database(applicationContext: Context): WorkoutDatabase =
         Room.databaseBuilder(
-                applicationContext,
-                WorkoutDatabase::class.java, "workouts"
-            )
+            applicationContext,
+            WorkoutDatabase::class.java, "workouts"
+        )
             .fallbackToDestructiveMigration()
             .build()
 

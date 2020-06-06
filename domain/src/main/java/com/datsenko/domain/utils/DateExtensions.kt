@@ -1,6 +1,5 @@
-package com.datsenko.workouts.utils
+package com.datsenko.domain.utils
 
-import androidx.annotation.IntRange
 import java.util.Calendar
 import java.util.Date
 
@@ -14,7 +13,7 @@ val Date.isYesterday: Boolean
     get() = isTheDay(time, -1)
 
 
-private fun isTheDay(time: Long, @IntRange(from = -1, to = 1) period: Int): Boolean {
+private fun isTheDay(time: Long, period: Int): Boolean {
     val calendar = Calendar.getInstance()
     calendar.timeInMillis = time
 
