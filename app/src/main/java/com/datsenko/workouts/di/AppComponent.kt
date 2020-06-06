@@ -26,5 +26,4 @@ interface AppComponent : AndroidInjector<AndroidApp> {
     interface Factory {
         fun create(@BindsInstance applicationContext: Context): AppComponent
     }
-
 }

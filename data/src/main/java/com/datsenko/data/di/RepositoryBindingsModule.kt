@@ -7,9 +7,9 @@ import dagger.Module
 import javax.inject.Singleton
 
 @Module
-abstract class RepositoryBindingsModule {
+interface RepositoryBindingsModule {
 
     @Binds
     @Singleton
-    abstract fun bindResultViewModel(repository: WorkoutRepository): WorkoutRepositoryApi
+    fun bindResultViewModel(repository: WorkoutRepository): WorkoutRepositoryApi
 }

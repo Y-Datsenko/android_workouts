@@ -10,7 +10,7 @@ class ExerciseModelMapper @Inject constructor(
     private val dateFormatter: DateFormatter
 ) : BaseMapper<Exercise, ExerciseModel> {
 
-    override fun map(from: com.datsenko.domain.Exercise): ExerciseModel =
+    override fun map(from: Exercise): ExerciseModel =
         ExerciseModel(
             repeatsCount = from.repeats.toString(),
             timestamp = dateFormatter.formatToDayMonthReadableDayOfWeekStr(from.date)

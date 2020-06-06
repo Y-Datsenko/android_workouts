@@ -1,12 +1,11 @@
 package com.datsenko.workouts.presentation.results.epoxy
 
-import android.view.View
 import android.widget.TextView
 import com.airbnb.epoxy.EpoxyAttribute
-import com.airbnb.epoxy.EpoxyHolder
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.datsenko.workouts.R
+import com.datsenko.workouts.presentation.base.BaseEpoxyHolder
 import com.datsenko.workouts.presentation.results.model.ExerciseModel
 
 @EpoxyModelClass(layout = R.layout.item_result_workout)
@@ -19,15 +18,8 @@ abstract class ExerciseItemEpoxyModel : EpoxyModelWithHolder<ExerciseItemEpoxyMo
         holder.exerciseTime.text = model.timestamp
     }
 
-    class Holder : EpoxyHolder() {
-        lateinit var repeatsValue: TextView
-        lateinit var exerciseTime: TextView
-
-        override fun bindView(itemView: View) {
-            with(itemView) {
-                repeatsValue = findViewById(R.id.repeats_value)
-                exerciseTime = findViewById(R.id.exercise_time)
-            }
-        }
+    class Holder : BaseEpoxyHolder() {
+        val repeatsValue by lazy { itemView.findViewById(R.id.repeats_value) as TextView }
+        val exerciseTime by lazy { itemView.findViewById(R.id.exercise_time) as TextView }
     }
 }

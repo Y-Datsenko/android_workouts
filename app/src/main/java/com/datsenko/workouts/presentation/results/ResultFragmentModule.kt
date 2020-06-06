@@ -7,10 +7,10 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 
 @Module
-abstract class ResultFragmentModule {
+interface ResultFragmentModule {
 
     @Binds
     @IntoMap
     @ViewModelKey(ResultViewModel::class)
-    abstract fun bindResultViewModel(factory: ResultViewModel.Factory): StatelessViewModelFactory<*>
+    fun bindResultViewModel(factory: ResultViewModel.Factory): StatelessViewModelFactory<*>
 }

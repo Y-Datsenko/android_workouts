@@ -1,6 +1,5 @@
 package com.datsenko.workouts.presentation.results
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
@@ -18,10 +17,6 @@ class ResultViewModel @AssistedInject constructor(
         repository.observeExercises()
             .map { it.map(exerciseModelMapper::map) }
             .asLiveData(viewModelScope.coroutineContext)
-
-    init {
-        Log.d("logTag", "init $repository")
-    }
 
     @AssistedInject.Factory
     interface Factory : StatelessViewModelFactory<ResultViewModel>
