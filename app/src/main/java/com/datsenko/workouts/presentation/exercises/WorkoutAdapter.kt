@@ -7,9 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.datsenko.domain.Workout
 import com.datsenko.workouts.R
 
-class WorkoutAdapter(private val workouts: List<com.datsenko.domain.Workout> = listOf()) : RecyclerView.Adapter<WorkoutAdapter.Holder>() {
+class WorkoutAdapter(private val workouts: List<Workout> = listOf()) : RecyclerView.Adapter<WorkoutAdapter.Holder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_workout, parent, false)
@@ -27,7 +28,7 @@ class WorkoutAdapter(private val workouts: List<com.datsenko.domain.Workout> = l
         private val title: TextView = view.findViewById(R.id.workout_title)
         private val image: ImageView = view.findViewById(R.id.workout_image)
 
-        fun bind(item: com.datsenko.domain.Workout) {
+        fun bind(item: Workout) {
             title.text = item.title
             Glide.with(image).load(item.imageUrl).into(image)
         }
