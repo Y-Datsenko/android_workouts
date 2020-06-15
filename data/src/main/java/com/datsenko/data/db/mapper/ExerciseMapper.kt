@@ -1,8 +1,8 @@
-package com.datsenko.workouts.data.db.mapper
+package com.datsenko.data.db.mapper
 
-import com.datsenko.workouts.data.db.ExerciseEntity
-import com.datsenko.workouts.domain.Exercise
-import com.datsenko.workouts.utils.Mapper
+import com.datsenko.data.db.ExerciseEntity
+import com.datsenko.domain.Exercise
+import com.datsenko.domain.utils.Mapper
 import javax.inject.Inject
 
 class ExerciseMapper @Inject constructor() : Mapper<Exercise, ExerciseEntity> {

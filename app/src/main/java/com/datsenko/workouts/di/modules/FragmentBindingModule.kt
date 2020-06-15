@@ -8,13 +8,13 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Module
-abstract class FragmentBindingModule {
+interface FragmentBindingModule {
 
     @FragmentScope
     @ContributesAndroidInjector(modules = [ResultFragmentModule::class])
-    abstract fun workoutResultFragment(): ResultFragment
+    fun workoutResultFragment(): ResultFragment
 
     @FragmentScope
     @ContributesAndroidInjector
-    abstract fun addExerciseFragment(): AddExerciseFragment
+    fun addExerciseFragment(): AddExerciseFragment
 }

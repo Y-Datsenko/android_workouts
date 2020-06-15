@@ -6,9 +6,10 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.datsenko.domain.Exercise
+import com.datsenko.domain.WorkoutRepositoryApi
 import com.datsenko.workouts.di.StatefulViewModelFactory
-import com.datsenko.workouts.domain.Exercise
-import com.datsenko.workouts.domain.WorkoutRepositoryApi
+import com.datsenko.workouts.utils.SingleEvent
 import com.squareup.inject.assisted.Assisted
 import com.squareup.inject.assisted.AssistedInject
 import kotlinx.coroutines.launch
@@ -24,12 +25,12 @@ class AddExerciseViewModel @AssistedInject constructor(
         const val ARG_IS_ADDING = "ARG_IS_ADDING"
     }
 
-    private var _closeEvent = MutableLiveData<Any>()
+    private var _closeEvent = MutableLiveData<SingleEvent>()
     private val _repeats: LiveData<Int> = handle.getLiveData(ARG_REPEATS, 0)
 
     val repeats: LiveData<String> = Transformations.map(_repeats) { it.toString() }
     val isAddingMode: LiveData<Boolean> = handle.getLiveData(ARG_IS_ADDING, true)
-    val closeEvent: LiveData<Any> = _closeEvent
+    val closeEvent: LiveData<SingleEvent> = _closeEvent
 
     fun onOnePressed() {
         changeCount(1)
@@ -54,7 +55,7 @@ class AddExerciseViewModel @AssistedInject constructor(
                 val entity = Exercise(date = Date(), repeats = _repeats.value ?: 0)
                 repository.insert(entity)
             }
-            _closeEvent.postValue(Any())
+            _closeEvent.postValue(SingleEvent())
         }
     }
 

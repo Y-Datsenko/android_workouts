@@ -1,4 +1,4 @@
-package com.datsenko.workouts.domain
+package com.datsenko.domain
 
 import java.util.Date
 

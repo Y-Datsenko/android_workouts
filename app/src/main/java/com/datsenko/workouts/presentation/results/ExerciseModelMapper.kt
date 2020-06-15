@@ -1,8 +1,8 @@
 package com.datsenko.workouts.presentation.results
 
-import com.datsenko.workouts.domain.Exercise
+import com.datsenko.domain.Exercise
+import com.datsenko.domain.utils.BaseMapper
 import com.datsenko.workouts.presentation.results.model.ExerciseModel
-import com.datsenko.workouts.utils.BaseMapper
 import com.datsenko.workouts.utils.DateFormatter
 import javax.inject.Inject
 

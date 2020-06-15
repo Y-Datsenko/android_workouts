@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.datsenko.workouts.databinding.FragmentAddExerciseBinding
 import com.datsenko.workouts.presentation.base.DaggerBottomSheetDialogFragment
+import com.datsenko.workouts.utils.EventObserver
 import com.datsenko.workouts.utils.fragmentSavedStateViewModels
 import javax.inject.Inject
 
@@ -37,6 +38,6 @@ class AddExerciseFragment : DaggerBottomSheetDialogFragment() {
 
         viewModel.repeats.observe(viewLifecycleOwner, Observer { binding.repeatsValue.text = it })
         viewModel.isAddingMode.observe(viewLifecycleOwner, Observer { binding.switch1.isChecked = it })
-        viewModel.closeEvent.observe(viewLifecycleOwner, Observer { dismiss() })
+        viewModel.closeEvent.observe(viewLifecycleOwner, EventObserver { dismiss() })
     }
 }

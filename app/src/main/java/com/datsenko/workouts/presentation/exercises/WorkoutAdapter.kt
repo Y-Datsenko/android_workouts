@@ -7,8 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.datsenko.domain.Workout
 import com.datsenko.workouts.R
-import com.datsenko.workouts.domain.Workout
 
 class WorkoutAdapter(private val workouts: List<Workout> = listOf()) : RecyclerView.Adapter<WorkoutAdapter.Holder>() {
 
